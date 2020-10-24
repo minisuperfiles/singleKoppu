@@ -55,14 +55,14 @@ class SingleKoppu {
       flush(); // Flush system output buffer
       readfile($file);
       exit;
-    } elseif($data['type'] == 'dir') {
+    } else if ($data['type'] == 'dir') {
       echo 'zip download not done.......<br>';
     }
   }
   function delete($data) {
     if ($data['type'] == 'dir') {
       $info = rmdir($data['curDir'] . '/' . $data['delete']);
-    } elseif($data['type'] == 'file') {
+    } else if ($data['type'] == 'file') {
       $info = unlink($data['curDir'] . '/' . $data['delete']);
     }
     $this->dir = $data['curDir'];
@@ -121,7 +121,7 @@ class SingleKoppu {
   }
 }
 
-// action
+//action
 $koppu = new SingleKoppu();
 $error = $koppu->auto($_GET, $_FILES, $_POST);
 $list = $koppu->fileList();
@@ -176,14 +176,14 @@ $list = $koppu->fileList();
 </pre>
 <script>
   var singleKoppu = {
-    renameInput : function(elem) {
+    renameInput: function(elem) {
       elem.nextElementSibling.setAttribute('koppu-data-new', elem.value);
     },
-    renameAction : function(elem) {
+    renameAction: function(elem) {
       var dir = document.querySelector('input[koppu=dir]');
       window.location.href=`?rename=${elem.getAttribute('koppu-data')}&newName=${elem.getAttribute('koppu-data-new')}&type=${elem.getAttribute('koppu-data-type')}&curDir=${dir.value}`;
     },
-    folderAction : function(elem) {
+    folderAction: function(elem) {
       var dir = document.querySelector('input[koppu=dir]');
       var input = document.querySelector('input[koppu-folder-input]');
       window.location.href = `?createFolder=${input.value}&curDir=${dir.value}`;
