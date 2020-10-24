@@ -27,11 +27,12 @@ class SingleKoppu {
     for ($i = 0; $i < sizeof($files); $i++) {
       $type = filetype($this->dir . '/' . $files[$i]);
       $download = "?download={$files[$i]}&type={$type}&curDir={$this->dir}";
-      $list[] = array('file' => $files[$i],
+      $list[] = array(
+        'file' => $files[$i],
         'type' => $type,
         'download' => $download,
         'delete' => "?delete={$files[$i]}&type={$type}&curDir={$this->dir}",
-        'view' => ($type=='dir') ? "?goDir={$this->dir}/{$files[$i]}&curDir={$this->dir}" : $download,
+        'view' => ($type == 'dir') ? "?goDir={$this->dir}/{$files[$i]}&curDir={$this->dir}" : $download,
       );
     }
     return $list;
@@ -203,7 +204,7 @@ $list = $koppu->fileList();
   });
  } 
 
- document.querySelector('input[koppu-folder-action]').addEventListener('click', function(){
+ document.querySelector('input[koppu-folder-action]').addEventListener('click', function() {
   singleKoppu.folderAction(this);
  });
 </script>
