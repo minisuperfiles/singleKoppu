@@ -104,7 +104,7 @@ class SingleKoppu {
     if (isset($get['download'])) {
       $this->download($get);
     }
-    //download
+    //delete
     if (isset($get['delete'])) {
       $this->delete($get);
     }
